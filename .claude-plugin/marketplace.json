@@ -1,0 +1,20 @@
+{
+  "name": "claude-marketplace",
+  "owner": {
+    "name": "norifumi3"
+  },
+  "plugins": [
+    {
+      "name": "agent-memory",
+      "source": "./plugins/agent-memory",
+      "description": "永続的なメモリ管理スキル - 会話を超えて情報を保存・参照",
+      "version": "1.0.0"
+    },
+    {
+      "name": "ms-docs-researcher",
+      "source": "./plugins/ms-docs-researcher",
+      "description": "Microsoft公式ドキュメントの検索・取得スキル",
+      "version": "1.0.0"
+    }
+  ]
+}

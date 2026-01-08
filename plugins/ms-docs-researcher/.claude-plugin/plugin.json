@@ -1,0 +1,9 @@
+{
+  "name": "ms-docs-researcher",
+  "description": "Microsoft公式ドキュメントの検索・取得",
+  "version": "1.0.0",
+  "author": {
+    "name": "norifumi3"
+  },
+  "keywords": ["microsoft", "azure", "documentation", "research"]
+}

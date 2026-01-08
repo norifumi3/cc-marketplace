@@ -1,0 +1,9 @@
+{
+  "name": "agent-memory",
+  "description": "永続的なメモリ管理 - 会話を超えて情報を保存・参照",
+  "version": "1.0.0",
+  "author": {
+    "name": "norifumi3"
+  },
+  "keywords": ["memory", "persistence", "notes"]
+}

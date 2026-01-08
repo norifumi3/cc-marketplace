@@ -1,11 +1,11 @@
-# claude-marketplace
+# norifumi3-marketplace
 
 個人用 Claude Code プラグインマーケットプレイス
 
 ## インストール
 
 ```bash
-/plugin marketplace add norifumi3/claude-marketplace
+/plugin marketplace add norifumi3/norifumi3-marketplace
 ```
 
 ## 含まれるプラグイン
@@ -14,14 +14,14 @@
 永続的なメモリ管理スキル。会話を超えて情報を保存・参照できます。
 
 ```bash
-/plugin install agent-memory@claude-marketplace
+/plugin install agent-memory@norifumi3-marketplace
 ```
 
 ### ms-docs-researcher
 Microsoft公式ドキュメントの検索・取得スキル。Azure、Power Platform、Microsoft 365などのドキュメントを効率的に調査できます。
 
 ```bash
-/plugin install ms-docs-researcher@claude-marketplace
+/plugin install ms-docs-researcher@norifumi3-marketplace
 ```
 
 ## 使い方

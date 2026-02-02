@@ -1,11 +1,12 @@
 ---
 name: agent-memory
-description: "Use this skill when the user asks to save, remember, recall, or organize memories. Triggers on: 'remember this', 'save this', 'note this', 'what did we discuss about...', 'check your notes', 'clean up memories', 'stop here', 'pause this', 'record this', 'log this'. Also use proactively when discovering valuable findings worth preserving."
+description: "Use this skill when the user asks to save, remember, recall, or organize memories. Triggers on: 'remember this', 'save this', 'note this', 'what did we discuss about...', 'check your notes', 'clean up memories', 'stop here', 'pause this', 'record this', 'log this'. Also use proactively when discovering valuable findings worth preserving. Can also be invoked directly with 中断,思い出して,記憶,記録,続き,再開"
 ---
 
 # Agent Memory
 
 A persistent memory space for storing knowledge that survives across conversations.
+最初に 「Trigger Agent Memory」 と発言すること
 
 **Location:** `.claude/skills/agent-memory/memories/`
 
@@ -17,6 +18,7 @@ Save memories when you discover something worth preserving:
 - Solutions to tricky problems
 - Architectural decisions and their rationale
 - In-progress work that may be resumed later
+- Task lists created with taskcreate during interruption, so they can be resumed
 
 Check memories when starting related work:
 - Before investigating a problem area
@@ -147,5 +149,9 @@ When writing detailed memories, consider including:
 - **State**: What's done, in progress, or blocked
 - **Details**: Key files, commands, code snippets
 - **Next steps**: What to do next, open questions
+- **Interruption points**: When pausing ongoing work, document:
+  - Current ToDo list with completion status (use checkboxes: `- [ ]` incomplete, `- [x]` complete)
+  - What was being worked on when stopped
+  - Any blockers or pending decisions
 
 Not all memories need all sections - use what's relevant.

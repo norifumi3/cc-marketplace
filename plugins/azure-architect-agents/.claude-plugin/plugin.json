@@ -1,0 +1,9 @@
+{
+  "name": "azure-architect-agents",
+  "description": "Azure architecture design & implementation support system with Skills (S1-S5) and Sub-Agents (A1-A12)",
+  "version": "1.0.0",
+  "author": {
+    "name": "norifumi3"
+  },
+  "keywords": ["azure", "architecture", "waf", "caf", "landing-zone", "migration", "design-review"]
+}

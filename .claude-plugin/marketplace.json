@@ -15,6 +15,12 @@
       "source": "./plugins/ms-docs-researcher",
       "description": "Microsoft公式ドキュメントの検索・取得スキル",
       "version": "1.0.0"
+    },
+    {
+      "name": "azure-architect-agents",
+      "source": "./plugins/azure-architect-agents",
+      "description": "Azure architecture design & implementation support - WAF review, CAF guide, Landing Zone, Workload design, Migration planning",
+      "version": "1.0.0"
     }
   ]
 }

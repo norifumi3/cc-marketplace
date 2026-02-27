@@ -19,13 +19,13 @@ Every memory must be assigned a unique tracking ID.
 
 ### ID Format
 
-`AM-YYYYMMDD-NNN`
+`AM-YYYYMMDD-HHMMSS`
 
 - `AM` = Agent Memory prefix
 - `YYYYMMDD` = creation date
-- `NNN` = sequential number for that day (001–999)
+- `HHMMSS` = 24時間制の時刻
 
-Examples: `AM-20260204-001`, `AM-20260204-002`
+Examples: `AM-20260204-143052`, `AM-20260204-153210`
 
 ### Assignment Procedure
 
@@ -46,7 +46,7 @@ pwsh "$HOME/.claude/plugins/marketplaces/cc-marketplace/plugins/agent-memory/ski
 ```
 PS> pwsh agent-memory-helper.ps1 -Action save-prepare -Path ".claude\skills\agent-memory\memories\new-category"
 Created: .claude\skills\agent-memory\memories\new-category
-Assigned: AM-20260206-001
+Assigned: AM-20260206-143052
 ```
 
 ### ⚠️ Mandatory Rule: Tracking ID Notification
@@ -54,8 +54,8 @@ Assigned: AM-20260206-001
 **After saving a memory, you MUST notify the user of the tracking ID. No exceptions.**
 
 Notification example:
-> ✅ Memory saved: `AM-20260204-001`
-> To reference this in another session, say "Read AM-20260204-001".
+> ✅ Memory saved: `AM-20260204-143052`
+> To reference this in another session, say "Read AM-20260204-143052".
 
 Never skip this notification. Without the ID, the user cannot reference the memory from another session.
 
@@ -134,7 +134,7 @@ All memories must include frontmatter with `tracking_id` and `summary` fields. T
 **Required:**
 ```yaml
 ---
-tracking_id: AM-20260204-001
+tracking_id: AM-20260204-143052
 summary: "1-2 line description of what this memory contains"
 created: 2026-02-04
 ---
@@ -143,7 +143,7 @@ created: 2026-02-04
 **Optional:**
 ```yaml
 ---
-tracking_id: AM-20260204-001
+tracking_id: AM-20260204-143052
 summary: "Worker thread memory leak during large file processing - cause and solution"
 created: 2026-02-04
 updated: 2026-02-05
@@ -162,11 +162,11 @@ related_ids: [AM-20260203-002]
 MEMORY_DIR=".claude/skills/agent-memory/memories"
 
 # Find file by exact tracking ID
-rg "^tracking_id: AM-20260204-001" "$MEMORY_DIR" \
+rg "^tracking_id: AM-20260204-143052" "$MEMORY_DIR" \
   --no-ignore --hidden -l 2>/dev/null
 
-# Fuzzy search with partial ID (date omitted)
-rg "^tracking_id: AM-.*-001" "$MEMORY_DIR" --no-ignore --hidden -l 2>/dev/null
+# Fuzzy search with partial ID (time omitted)
+rg "^tracking_id: AM-20260204-" "$MEMORY_DIR" --no-ignore --hidden -l 2>/dev/null
 
 # List all IDs created today
 rg "^tracking_id: AM-$(date +%Y%m%d)" "$MEMORY_DIR" --no-ignore --hidden 2>/dev/null
@@ -190,7 +190,7 @@ rg "^summary:.*keyword" "$MEMORY_DIR" --no-ignore --hidden -i 2>/dev/null
 rg "^tags:.*keyword" "$MEMORY_DIR" --no-ignore --hidden -i 2>/dev/null
 
 # 5. Search by related tracking IDs
-rg "^related_ids:.*AM-20260204-001" "$MEMORY_DIR" --no-ignore --hidden 2>/dev/null
+rg "^related_ids:.*AM-20260204-143052" "$MEMORY_DIR" --no-ignore --hidden 2>/dev/null
 
 # 6. Full-text search (when summary search isn't enough)
 rg "keyword" "$MEMORY_DIR" --no-ignore --hidden -i 2>/dev/null
@@ -217,7 +217,7 @@ mkdir -p "$MEMORY_DIR/category-name/"
 # Note: Check if file exists before writing to avoid accidental overwrites
 cat > "$MEMORY_DIR/category-name/filename.md" << 'EOF'
 ---
-tracking_id: AM-20260204-001
+tracking_id: AM-20260204-143052
 summary: "Brief description of this memory"
 created: 2026-02-04
 ---
@@ -232,7 +232,7 @@ EOF
 
 ### Recall (cross-session retrieval)
 
-When the user says something like "Read AM-XXXXXXXX-NNN":
+When the user says something like "Read AM-XXXXXXXX-HHMMSS":
 
 1. Search for the file by tracking ID
 2. Read the file contents
@@ -242,7 +242,7 @@ When the user says something like "Read AM-XXXXXXXX-NNN":
 MEMORY_DIR=".claude/skills/agent-memory/memories"
 
 # 1. Locate the file
-file=$(rg "^tracking_id: AM-20260204-001" "$MEMORY_DIR" \
+file=$(rg "^tracking_id: AM-20260204-143052" "$MEMORY_DIR" \
   --no-ignore --hidden -l)
 
 # 2. Read it

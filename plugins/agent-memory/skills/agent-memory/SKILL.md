@@ -1,7 +1,6 @@
 ---
 name: agent-memory
-description: "[LEGACY - 読み取り専用] 過去のagent-memoryデータを参照するためのスキル。新規メモリはclaude-memに記録すること。ユーザーが /agent-memory で明示的に起動した場合のみ実行。"
-disable-model-invocation: true
+description: "Use this skill when the user asks to save, remember, recall, or check memories. MANDATORY: Always use at session start for status verification when user says '思い出して', '前回の作業', '続き', '再開'. Also triggers on '記憶', 'TODO確認', 'メモリ検索', '状況確認', '中断', '記録', 'remember this', 'save this', 'record this', 'stop here', 'pause this'. Use proactively for valuable findings and complete status verification before any work proposals."
 ---
 
 # Agent Memory
